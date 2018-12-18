@@ -1,0 +1,131 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            COB Calculator
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <!--The world is your oyster.
+    <p>
+      If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
+    </p>-->
+    <!--<ion-list>
+        <button ion-item *ngFor="let qttCob of numberOfCobs" (click)="itemSelected(qttCob)">
+            {{ qttCob }}
+        </button>
+    </ion-list>-->
+
+    <ion-item>
+        <ion-label stacked>{{"chipModel" | translate}}</ion-label>
+        <ion-select [(ngModel)]="chipCob" (ionChange)="validate()">
+            <ion-option *ngFor="let chip of modelosChip" [value]="chip">{{ chip }}</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <!--<ion-item>
+        <ion-label *ngIf="!midPower" stacked>{{"currentAmp" | translate}}</ion-label>
+        <ion-select [(ngModel)]="corrente" (ionChange)="validate()">
+            <ion-option *ngFor="let amp of correnteAmp" [value]="amp">{{ amp }}</ion-option>
+        </ion-select>
+    </ion-item>-->
+
+    <ion-item>
+        <ion-label stacked>{{"currentAmp" | translate}}</ion-label>
+        <ion-select *ngIf="!midPower" [(ngModel)]="corrente" (ionChange)="validate()">
+            <ion-option *ngFor="let amp of correnteAmp" [value]="amp">{{ amp }}</ion-option>
+        </ion-select>
+        <ion-select *ngIf="midPower" [(ngModel)]="corrente" (ionChange)="validate()">
+            <ion-option *ngFor="let amp of correnteAmpMid" [value]="amp">{{ amp }}</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label stacked>{{"cobQtt" | translate}}</ion-label>
+        <ion-input type="number" min="1" step="1" [(ngModel)]="numCobs" (ionChange)="validate()"></ion-input>
+        <!--<ion-select [(ngModel)]="numCobs">
+            <ion-option *ngFor="let qttCob of numberOfCobs" [value]="qttCob">{{ qttCob }}</ion-option>
+        </ion-select>-->
+    </ion-item>
+
+    <ion-item>
+        <ion-label stacked>{{"canopyArea" | translate}}</ion-label>
+        <ion-input type="number" min="0" step="0.1" [(ngModel)]="area" (ionChange)="validate()"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label stacked>{{"driverEfficiency" | translate}}</ion-label>
+        <ion-input type="number" min="70" max="100" step="1" [(ngModel)]="eficienciaDriver"
+                   (ionChange)="validate()"></ion-input>
+    </ion-item>
+
+    <!-- Informações -->
+    <ion-card>
+        <ion-card-header>{{ "info" | translate }}</ion-card-header>
+        <ion-card-content>
+            <ion-icon name="flash" item-start></ion-icon>
+            <strong>{{"currentAmp" | translate}}:</strong> {{"information.currentAmp" | translate}}<br><br>
+
+            <ion-icon name="cube" item-start></ion-icon>
+            <strong>{{"canopyArea" | translate}}:</strong> {{"information.canopyArea" | translate}}<br><br>
+
+            <ion-icon name="calculator" item-start></ion-icon>
+            <strong>{{"driverEfficiency" | translate}}:</strong> {{"information.driverEfficiency" | translate}}
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="mostraResultado">
+        <ion-card-header><strong>{{"results.result" | translate}}</strong></ion-card-header>
+        <ion-card-content>
+            <ion-icon name="warning" item-start></ion-icon>
+            {{"results.resultWarning" | translate}}.<br><br>
+
+            <ion-icon name="ios-flash" item-start></ion-icon>
+            <strong>{{"results.totalPowerWatts" | translate}}:</strong> {{totalWattage}}W<br><br>
+
+            <ion-icon name="ios-flash-outline" item-start></ion-icon>
+            <strong>{{"results.cobPowerWatts" | translate}}:</strong> {{totalCobWattage}}W<br><br>
+
+            <ion-icon name="power" item-start></ion-icon>
+            <strong>{{"results.totalVoltage" | translate}}:</strong> {{totalVoltageForward}}V<br><br>
+
+            <ion-icon name="ios-power" item-start></ion-icon>
+            <strong>{{"results.cobVoltage" | translate}}:</strong> {{cobVoltageForward}}V<br><br>
+
+            <ion-icon name="sunny" item-start></ion-icon>
+            <strong>{{"results.totalLumens" | translate}}:</strong> {{totalLumens}} lm<br><br>
+
+            <ion-icon name="bulb" item-start></ion-icon>
+            <strong>{{"results.totalPPF" | translate}}:</strong> {{totalPPF}}<br><br>
+
+            <ion-icon name="md-glasses" item-start></ion-icon>
+            <strong [ngStyle]="{'color': color}" style="color: #007aff">{{"results.PPFD" | translate}}:</strong>
+            {{PPFD}}<br><br>
+
+            <ion-icon name="speedometer" item-start></ion-icon>
+            <strong>{{"results.totalPARWatts" | translate}}:</strong> {{totalParWatts}}<br><br>
+
+            <ion-icon name="calculator" item-start></ion-icon>
+            <strong>{{"results.cobEfficiency" | translate}}:</strong> {{cobEfficiency}}%<br><br>
+        </ion-card-content>
+    </ion-card>
+
+    <button ion-button block (click)="calcular()" [disabled]="buttonDisabled">{{"calcButton" | translate}}</button>
+
+    <br>
+
+    <div style="text-align: center;">
+        <!-- Revive Adserver iFrame Tag - Generated with Revive Adserver v4.1.4 -->
+        <iframe id='ab8d4445' name='ab8d4445'
+                src='http://thepuffhub-ad-server.herokuapp.com/www/delivery/afr.php?zoneid=1&amp;cb=7283648723'
+                frameborder='0' scrolling='no' width='320' height='50'><a
+                href='http://thepuffhub-ad-server.herokuapp.com/www/delivery/ck.php?n=a6e1bba5&amp;cb=7283648723'
+                target='_blank'><img
+                src='http://thepuffhub-ad-server.herokuapp.com/www/delivery/avw.php?zoneid=1&amp;cb=7283648723&amp;n=a6e1bba5'
+                border='0' alt=''/></a></iframe>
+
+    </div>
+
+
+</ion-content>

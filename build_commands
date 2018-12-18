@@ -1,0 +1,7 @@
+ionic cordova build android --prod --release
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore COBCalc-key.jks platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk COBCalc
+
+~/Library/Android/sdk/build-tools/28.0.2/zipalign -v 4 platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk COBCalc.apk
+
+~/Library/Android/sdk/build-tools/28.0.2/apksigner verify COBCalc.apk

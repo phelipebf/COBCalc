@@ -1,0 +1,30 @@
+{
+  "info": "Information",
+  "chipModel": "COB Chip Model",
+  "currentAmp": "Current (mA)",
+  "cobQtt": "Number of COBs",
+  "canopyArea": "Canopy Area (sq. ft.)",
+  "driverEfficiency": "Driver Efficiency (%)",
+
+  "information": {
+    "currentAmp": "Current supplied to each chip.",
+    "canopyArea": "Multiply the measures width x depth, in square feets.",
+    "driverEfficiency": "94% for MeanWell. 90% for TCI/Lival. 85% for generic/Chinese models. Or the efficiency informed by the manufacturer."
+  },
+
+  "results": {
+    "result": "RESULTS",
+    "resultWarning": "The values presented are mere estimates and need to be verified with specialized equipment",
+    "totalPowerWatts": "Total power (W) driver efficiency",
+    "cobPowerWatts": "COBS total power (W)",
+    "totalVoltage": "Total Voltage",
+    "cobVoltage": "Voltage per COB",
+    "totalLumens": "Total Lúmens",
+    "totalPPF": "Total PPF",
+    "PPFD": "PPFD (Canopy Area)",
+    "totalPARWatts": "PAR Watts (per sq. ft)",
+    "cobEfficiency": "COB Efficiency"
+  },
+
+  "calcButton": "Calculate"
+}

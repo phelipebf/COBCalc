@@ -1,0 +1,9 @@
+git init
+
+heroku git:remote -a cobcalc
+
+<?php header( 'Location: /index.html' ) ;  ?>
+
+// add, commit, etc
+
+git push heroku master --force

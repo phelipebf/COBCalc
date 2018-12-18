@@ -1,0 +1,30 @@
+{
+  "info": "Informações",
+  "chipModel": "Modelo Chip COB",
+  "currentAmp": "Corrente (mA)",
+  "cobQtt": "Qtd. de COBs",
+  "canopyArea": "Área Iluminada (m²)",
+  "driverEfficiency": "Eficiência do Driver (%)",
+
+  "information": {
+    "currentAmp": "Corrente recebida por cada chip.",
+    "canopyArea": "Multiplique as medidas largura x profundidade, em metros.",
+    "driverEfficiency": "94% para MeanWell. 90% para TCI/Lival. 85% para modelos genéricos/chineses. Ou a eficiência informada pelo fabricante."
+  },
+
+  "results": {
+    "result": "RESULTADO",
+    "resultWarning": "Os números apresentados são mera estimativa e precisam ser verificados in loco com equipamento especializado",
+    "totalPowerWatts": "Potência total (W) pela eficiência do driver",
+    "cobPowerWatts": "Potência total (W) COBs",
+    "totalVoltage": "Tensão Total",
+    "cobVoltage": "Tensão por COB",
+    "totalLumens": "Lúmens Total",
+    "totalPPF": "PPF Total",
+    "PPFD": "PPFD (Área Iluminada)",
+    "totalPARWatts": "PAR Watts (por m²)",
+    "cobEfficiency": "Eficiência COB"
+  },
+
+  "calcButton": "Calcular"
+}
